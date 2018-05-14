@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="?attr/actionBarSize"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
+    android:elevation="@dimen/elevacion_actionbar"
+    >
+
+    <ImageView
+        android:id="@+id/imgHuella"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icons8_cat_footprint_48"
+        />
+
+    <TextView
+        android:id="@+id/tvAppname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textStyle="bold"
+        android:textSize="@dimen/app_name_size"
+        android:layout_marginLeft="95dp"
+        />
+    
+    <ImageView
+        android:id="@+id/imgEstrella"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icons8_hotel_50"
+        android:layout_marginLeft="60dp"
+        />
+
+</android.support.v7.widget.Toolbar>

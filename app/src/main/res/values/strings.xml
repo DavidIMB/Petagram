@@ -15,4 +15,15 @@
     <string name="descripcion_tarjeta">Esta es la versiòn en la que se incluyo Material Design Android Lollipop</string>
     <string name="nombre">Perro 1</string>
     <string name="calificacion">0</string>
+    <string name="menu_about">Acerca de</string>
+    <string name="menu_contacto">Contacto</string>
+    <string name="Bio">Proyecto realizado por: \nDavid Iván Morales Bueno</string>
+    <string name="nombre_form">Nombre Completo</string>
+    <string name="email_form">Email</string>
+    <string name="mensaje_form">Ingresa tu mensaje</string>
+    <string name="Enviar_Comentario">Enviar Comentario</string>
+    <string name="imgPerfil">Husky</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

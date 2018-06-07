@@ -9,4 +9,7 @@
     <dimen name="corner_radius_cardview">4dp</dimen>
     <dimen name="elevacion_actionbar">4dp</dimen>
     <dimen name="app_name_size">20dp</dimen>
+    <dimen name="Bio">30dp</dimen>
+    <dimen name="textInputMargin">22dp</dimen>
+    <dimen name="textInputMarginTop">10dp</dimen>
 </resources>

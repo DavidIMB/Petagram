@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,48 +10,61 @@
     android:background="@color/colorBlanco"
     >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/miActionBar"
-        android:layout_height="?attr/actionBarSize"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        android:elevation="@dimen/elevacion_actionbar"
-        >
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <ImageView
-            android:id="@+id/imgHuella"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icons8_cat_footprint_48"
-            />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/miActionBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="@dimen/elevacion_actionbar"
+            app:layout_scrollFlags="scroll|enterAlways">
 
-        <TextView
-            android:id="@+id/tvAppname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textStyle="bold"
-            android:textSize="@dimen/app_name_size"
-            android:layout_marginLeft="90dp"
-            />
+            <ImageView
+                android:id="@+id/imgHuella"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icons8_cat_footprint_48" />
 
-        <ImageView
-            android:id="@+id/imgEstrella"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icons8_hotel_50"
-            android:layout_marginLeft="60dp"
-            android:onClick="irSegundaActividad"
-            />
+            <TextView
+                android:id="@+id/tvAppname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90dp"
+                android:text="@string/app_name"
+                android:textSize="@dimen/app_name_size"
+                android:textStyle="bold" />
 
-    </android.support.v7.widget.Toolbar>
+            <ImageView
+                android:id="@+id/imgEstrella"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:onClick="irSegundaActividad"
+                android:src="@drawable/icons8_hotel_50" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvMascotas"
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.design.widget.TabLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/miActionBar"
-        />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
 
+    </android.support.v4.view.ViewPager>
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
+

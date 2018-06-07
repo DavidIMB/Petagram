@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityContacto"
+    android:orientation="vertical">
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/tiNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/nombre_form"
+        android:layout_marginLeft="@dimen/textInputMargin"
+        android:layout_marginRight="@dimen/textInputMargin"
+        android:layout_marginTop="@dimen/textInputMarginTop"
+        />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/tiEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email_form"
+        android:layout_marginLeft="@dimen/textInputMargin"
+        android:layout_marginRight="@dimen/textInputMargin"
+        android:layout_marginTop="@dimen/textInputMarginTop"
+        />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/tiMensaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/textInputMargin"
+        android:layout_marginRight="@dimen/textInputMargin"
+        android:layout_marginTop="@dimen/textInputMarginTop"
+        android:hint="@string/mensaje_form" />
+
+    <Button
+        android:id="@+id/BotonSiguiente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:text="@string/Enviar_Comentario"
+        android:theme="@style/MiBotonRaised"
+        />
+
+</LinearLayout>

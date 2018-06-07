@@ -1,61 +1,64 @@
 package com.davidmorales.petagram;
 
 import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Toast;
-import android.widget.Toolbar;
+import android.support.v7.widget.Toolbar;
+import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
-import java.util.function.ToLongBiFunction;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Mascota> mascotas;
-    private RecyclerView listaMascotas;
+    private Toolbar miActionBar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listaMascotas = (RecyclerView) findViewById(R.id.rvMascotas);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        miActionBar = (Toolbar) findViewById(R.id.miActionBar);
+        setSupportActionBar(miActionBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        listaMascotas.setLayoutManager(llm);
-        inicializarListaMascotas();
-        inicializarAdaptador();
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        setUpViewPager();
+
+        if(miActionBar!= null) {
+
+            setSupportActionBar(miActionBar);
+
+        }
 
     }
 
+    private ArrayList<Fragment> agregarFragments(){
 
-    public void inicializarAdaptador(){
-        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, this);
-        listaMascotas.setAdapter(adaptador);
+        ArrayList<Fragment> fragments = new ArrayList<>();
+
+        fragments.add(new RecyclerViewFragment());
+        fragments.add(new PerfilFragment());
+
+        return fragments;
     }
 
-    public void inicializarListaMascotas(){
-        mascotas = new ArrayList<Mascota>();
+    public void setUpViewPager(){
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(),agregarFragments()));
+        tabLayout.setupWithViewPager(viewPager);
 
-        mascotas.add(new Mascota(R.drawable.perro_1,"Perro 1"));
-        mascotas.add(new Mascota(R.drawable.perro_2,"Perro 2"));
-        mascotas.add(new Mascota(R.drawable.perro_3,"Perro 3"));
-        mascotas.add(new Mascota(R.drawable.perro_4,"Perro 4"));
-        mascotas.add(new Mascota(R.drawable.perro_5,"Perro 5"));
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_house_dog);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_dog);
     }
 
     public void irSegundaActividad (View v){
@@ -63,4 +66,27 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_opciones, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.mContacto:
+                Intent intent = new Intent(this, ActivityContacto.class);
+                startActivity(intent);
+                break;
+
+            case R.id.mAbout:
+                Intent intent1 = new Intent(this, ActivityAbout.class);
+                startActivity(intent1);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -2,6 +2,7 @@ package com.davidmorales.petagram;
 
 public class Mascota {
 
+    private int id;
     private String nombre;
     private int foto;
     private int calificacion = 0;
@@ -9,6 +10,10 @@ public class Mascota {
     public Mascota(int foto, String nombre){
         this.foto = foto;
         this.nombre = nombre;
+    }
+
+    public Mascota() {
+
     }
 
     public String getNombre() {
@@ -35,5 +40,11 @@ public class Mascota {
         this.calificacion = calificacion;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 }

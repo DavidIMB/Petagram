@@ -11,11 +11,12 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
-public class ListadoMascotas extends AppCompatActivity {
+public class ListadoMascotas extends AppCompatActivity implements iRecyclerViewFragmentView{
 
     ArrayList<Mascota> mascotas;
     private RecyclerView listaMascotas;
     Toolbar miActionBar;
+    private iRecyclerViewFragmentPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,28 +29,9 @@ public class ListadoMascotas extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         listaMascotas = (RecyclerView) findViewById(R.id.rvMascotas);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-        listaMascotas.setLayoutManager(llm);
-        inicializarListaMascotas();
-        inicializarAdaptador();
+        presenter = new RecyclerViewFragmentPresenter(this,this);
     }
 
-    public void inicializarAdaptador(){
-        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, this);
-        listaMascotas.setAdapter(adaptador);
-    }
-
-    public void inicializarListaMascotas(){
-        mascotas = new ArrayList<Mascota>();
-
-        mascotas.add(new Mascota(R.drawable.perro_1,"Perro 1"));
-        mascotas.add(new Mascota(R.drawable.perro_2,"Perro 2"));
-        mascotas.add(new Mascota(R.drawable.perro_3,"Perro 3"));
-        mascotas.add(new Mascota(R.drawable.perro_4,"Perro 4"));
-        mascotas.add(new Mascota(R.drawable.perro_5,"Perro 5"));
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -73,5 +55,23 @@ public class ListadoMascotas extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void generarLinearLayoutVertical() {
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        listaMascotas.setLayoutManager(llm);
+    }
+
+    @Override
+    public MascotaAdaptador crearAdaptador(ArrayList<Mascota> mascotas) {
+        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, this);
+        return adaptador;
+    }
+
+    @Override
+    public void inicializarAdaptadorRV(MascotaAdaptador adaptador) {
+        listaMascotas.setAdapter(adaptador);
     }
 }

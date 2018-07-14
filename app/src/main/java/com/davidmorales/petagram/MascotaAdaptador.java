@@ -38,9 +38,11 @@ public class MascotaAdaptador extends  RecyclerView.Adapter<MascotaAdaptador.Mas
         MascotaViewHolder.imgHuesoBlancoCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mascota.setCalificacion(mascota.getCalificacion()+1);
                 Toast.makeText(activity, "Diste like a " + mascota.getNombre(), Toast.LENGTH_SHORT).show();
-                mascotaViewHolder.tvCalificacionCV.setText(String.valueOf(mascota.getCalificacion()));
+
+                ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
+                constructorMascotas.darLikeMascota(mascota);
+                mascotaViewHolder.tvCalificacionCV.setText(String.valueOf(constructorMascotas.obtenerLikesMascota(mascota)));
             }
         });
     }
